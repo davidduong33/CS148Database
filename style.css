@@ -1,0 +1,21 @@
+/* CSS by David Duong */
+
+.small {
+    width: 350px;
+    height: 235px;
+}
+
+figure{
+    border: thin solid;
+    margin: 0 auto;
+}
+figcaption {
+    text-align: center;
+    margin-top: 1em;
+}
+ul li{
+    display: inline;
+    list-style-type: none;
+    padding-right: 3em;
+}
+

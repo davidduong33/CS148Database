@@ -1,0 +1,93 @@
+/* 
+    CSS by Robert Erickson edited by David Duong
+*/
+/*------------------------   standard elements  ----------------------------- */
+body{
+    margin: 0 5% 0 5%;
+}
+
+
+header{
+    overflow: auto; /* forces header to fit to figure */
+}
+
+header .float_left{
+    margin-top: 0;
+}
+
+header h1{
+    padding-bottom: 0.01em;
+    padding-top: 75px;
+}
+
+img{
+    max-width: 100%; /* image strinks to fit containor but does not stretch */
+}
+
+p{
+    margin-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    
+}
+
+/*------------------------   classes           ------------------------------ */
+figure{
+    border: thin solid;
+    margin: 0 auto;
+}
+
+.even{
+    background-color: lightskyblue;
+}
+
+.odd{
+    background-color: orange;
+}
+
+.small {
+    width: 400px;
+    height: 295px;
+}
+
+/*------------------------   nav section only  ------------------------------ */
+nav{
+    font-size: 12pt;
+    text-align: left;
+    margin-bottom: 2em;
+
+}
+nav ol {
+    padding-left: 5.33333333%;
+}
+nav ol li{
+    display: inline;
+    list-style-type: none;
+    padding-right: 2em;
+    padding-bottom: 2em;
+}
+/* unvisited link */
+a.nav:link, a.nav:visited {
+    color: #393939;
+}
+
+/*------------------------   table page  only  ------------------------------ */
+
+table { 
+font-family: Helvetica, Arial, sans-serif; 
+width: 640px; 
+border-collapse: collapse; 
+border-spacing: 0; 
+margin-left: auto;
+margin-right: auto;
+}
+
+td, th { border: 1px solid #CCC; height: 30px; }
+
+th {
+font-weight: bold;
+}
+
+td {
+text-align: center;
+}
+
