@@ -37,6 +37,7 @@ function securityCheck($path_parts, $yourURL, $form = false) {
     $whiteListPages[] = "q11.php";
     $whiteListPages[] = "q12.php";
     $whiteListPages[] = "q01.sql";
+    $whiteListPages[] = "join.php";
 
 
     //add all the folders to this array

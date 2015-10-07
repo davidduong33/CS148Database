@@ -1,1 +1,3 @@
-Select fldCourseName from tblCourses where NOT (fldDepartment = 'CS') and fldCourseName like '%data%'
+SELECT fldFirstName, fldPhone, fldSalary FROM tblTeachers 
+    WHERE fldSalary < (SELECT AVG(fldSalary) FROM tblTeachers) 
+    ORDER BY fldSalary DESC
