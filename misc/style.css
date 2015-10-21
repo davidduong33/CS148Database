@@ -96,3 +96,19 @@ td {
 text-align: center;
 }
 
+ol.button{
+    text-align: center;
+    padding-bottom: 2em;
+    padding-left: 5.33333333%;
+    
+}
+
+ol.button li{
+    display: inline;
+    list-style-type: none;
+    padding-right: 3em;
+    padding-left: 3em;
+}
+li.invalid {
+    visibility: hidden;
+}
