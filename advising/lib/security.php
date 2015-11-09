@@ -23,6 +23,8 @@ function securityCheck($path_parts, $yourURL, $form = false) {
     $whiteListPages[] = "populate-table.php";
     $whiteListPages[] = "populate-enrolled.php";
     $whiteListPages[] = "select.php";
+    $whiteListPages[] = "fourYearPlan.php";
+    $whiteListPages[] = "form.php";
    
     
     

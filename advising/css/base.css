@@ -1,5 +1,6 @@
 /* 
-    CSS by Robert Erickson edited by David Duong
+    Author     : Robert Erickson
+    Edited by David Duong
 */
 @import url('reset.css');
 /*------------------------   standard elements  ----------------------------- */
@@ -32,15 +33,42 @@ img{
     max-width: 100%; /* image strinks to fit containor but does not stretch */
 }
 
+p{
+    margin: 1em 0 1em 0;
+}
 section{
     padding: 2em;
-    width: 40%;  
+    width: 90%;
+    border: thin solid black;
 }
 
+.oneColumn{
+    width: 100%;
+}
+.fourColumns{
+    width: 25%;
+    float: left;
+}
+
+.clearFloats{
+    clear: both;
+}
+
+.academicYear{
+    padding: 2em 0 2em 0;
+    
+}
+.academicYear:after {
+  content:"";
+  display:table;
+  clear:both;
+}
 /*------------------------   classes           ------------------------------ */
-figure{
-    border: thin solid;
-    margin: 0 auto;
+.float_left {
+    border: thin solid darkslategray;
+    float: left;
+    margin: 1em 1em 1em 0;
+    padding: 0.5em;
 }
 
 .even{
@@ -56,11 +84,17 @@ figure{
     height: 235px;
 }
 
+figure{
+    border: thin solid;
+    margin: 0 auto;
+}
+
 /*------------------------   nav section only  ------------------------------ */
 nav ol li{
     display: inline-block;
     list-style-type: none;
     padding-right: 2em;
+    padding-bottom: 2em;
 }
 
 /*------------------------   table page  only  ------------------------------ */
@@ -90,3 +124,123 @@ nav ol li{
     text-align: left;
 }
 
+
+.Fall{
+    background-color:orange;
+}
+.Spring{
+    background-color: lightskyblue;
+}
+
+/*===================  Form  ==================================== */
+#form article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    width: 600px; /* not repsonive but fixed */
+}
+
+
+/* need to clear any floats that may exist */
+fieldset{
+    border: 2px solid #000000;
+    clear: both;  
+    margin: 3em;
+    text-align: center;
+    border-radius:10px 40px 40px 10px;
+}
+/* just pushes content to left side of the box. */
+fieldset.basicInfo{
+    display: block;
+    float: none;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+/* when you look at the labels this pushes then next to the input and right
+aligns them. Display block means they are each on their own line. */
+fieldset.basicInfo label{
+    display: block;
+    text-align: left; /* pushes the text to the right where they line up */
+    /* the float left above pushes everything back to the left*/
+}
+fieldset.basicInfo input{
+    width: 50%;
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.number {
+    background-color: #FF5A09;
+    color: white;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 100%;
+}
+fieldset.courseInfo input{
+    width: 15em; /* works with above to be the same size for the boxes */
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+fieldset.buttons{
+    border: none;
+
+
+}
+
+fieldset.wrapper {
+    border: 0;
+    margin: auto;
+}
+
+fieldset.wrapper legend {
+    color: #FF5A09;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+fieldset.wrapper > legend {
+    /* i only want the first legend ie if it follows the class wrapper */
+    font-size: 2em;
+}
+
+
+
+/* =================== Label ==================================== */
+
+label {
+    color: #FF9900;
+    display: block;
+    font-size: .9em;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+/* =================== Mistakes ==================================== */
+.mistake {
+    color: #fff;
+    background-color:#E42217;
+    border: medium solid #000;
+}
+
+
+#errors ol li{
+    color:#F70D1A;
+    font-weight: bold;
+}
+#errorsHead{
+    color:#F70D1A;
+    font-weight: bold;
+    text-align: center;
+}
+
+footer{
+    clear: both;
+    padding: 0.8em;
+}

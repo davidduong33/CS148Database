@@ -15,6 +15,16 @@
         } else {
             print '<li><a href="tables.php">Display Tables</a></li>';
         }
+         if ($path_parts['filename'] == "fourYearPlan") {
+            print '<li class="activePage">Four Year Plan</li>';
+        } else {
+            print '<li><a href="fourYearPlan.php">Four Year Plan</a></li>';
+        }
+          if ($path_parts['filename'] == "form") {
+            print '<li class="activePage">Create Plan</li>';
+        } else {
+            print '<li><a href="form.php">Create Plan</a></li>';
+        }
         
     
         ?>
