@@ -22,7 +22,7 @@ $columns = count($labels);
 
   $semesterCredits = 0;
   $totalCredits = 0;
-
+  $semester = '';
   if(is_array($records)) {
     foreach ($records as $row) {
       if ($semester != $row['pmkTerm'] . $row['pmkYear']) {
