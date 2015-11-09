@@ -20,42 +20,59 @@ $labels = array_filter($fields, "is_string");
 $columns = count($labels);
 
 
-  $semesterCredits = 0;
-  $totalCredits = 0;
-  $semester = '';
-  if(is_array($records)) {
-    foreach ($records as $row) {
-      if ($semester != $row['pmkTerm'] . $row['pmkYear']) {
-        if ($semester != '') {
-          print '</ol>';
-          print '<p>Total Credits: ' . $semesterCredits . '</p>';
-          print '</section>';
-        }
-        if ($semester != '' AND ($row['pmkTerm'] == 'FALL')) {
-          echo '</div>' . LINE_BREAK;
-        }
-        if ($row['pmkTerm'] == 'FALL') {
-          print '<div class="academicYear clearFloats">';
-        }
-        print '<section class="fourColumns';
-        print $row["pmkTerm"];
+  $semester = "";
+    $year = "";
+    $semesterCredits = 0;
+    $totalCredits = 0;
+    
+    
+    if(is_array($records)) {
+        foreach ($records as $row){
+        if ($semester != $row["pmkTerm"] . $row["pmkYear"]){
+            if($semester != "") {
+                print "</ol>";
+                print "<p>Total Credits: " . $semesterCredits;
+                print "</section>";
+                
+            }
+            
+            if ($semester != "" AND ( $row["pmkTerm"] == "Fall")) {
+                echo "</div>" . LINE_BREAK;
+                
+            }
+            if ($row["pmkTerm"] == "Fall"){
+                print "<div class='floatLeft'>";
+                
+            }
+            print '<section class="fourColumns ';
+            print $row["pmkTerm"];
 
-        print '">';
-        print '<h3>' . $row['pmkTerm'] . ' ' . $row['pmkYear'] . '</h3>';
-        $semester = $row['pmkTerm'] . $row['pmkYear'];
-        $year = $row['pmkYear'];
-        $semesterCredits = 0;
-
-        print '<ol>';
-      }
-      print '<li class="' . $row['fldRequirement'] . '">';
-      print $row['fldDepartment'] . ' ' . $row['fldCourseNumber'];
-      print '</li>' . LINE_BREAK;
-      $semesterCredits = $semesterCredits + $row['fldCredits'];
+            print '">';
+            print '<h3>' . $row["pmkTerm"] . " " . $row["pmkYear"];
+            $semester = $row["pmkTerm"] . $row["pmkYear"];
+            $year = $row["pmkYear"];
+            $semesterCredits = 0;
+            
+            
+            print "<ol>";
+        }
+        
+        
+        print '<li>';
+        print $row["fldDepartment"] . " " . $row["fldCourseNumber"];
+        print '</li>' . LINE_BREAK;
+        $semesterCredits = $semesterCredits + $row["fldCredits"];
+        $totalCredits = $totalCredits + $row["fldCredits"];
+        }
+        print "</ol>";
+        print "</section></div>" . LINE_BREAK;
     }
-    print '<p>Total Credits: ' . $semesterCredits . '</p>';
-  }
+    
 
-  include "footer.php";
+    
+
+    
+    
+    
+include "footer.php";
 ?>
-

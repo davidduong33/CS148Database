@@ -26,6 +26,8 @@
     <ul>
         <li><a href="advising/fourYearPlan.php">My Four Year Plan</a></li>
          <li><a href="advising/form.php">Form</a></li>
+         <li><a href="advising/ER Diagram.pdf">ER Diagram</a></li>
+         <li><a href="advising/schema.pdf">Schema</a></li>
     </ul>
     <p> Assignment 3: </p>
    
