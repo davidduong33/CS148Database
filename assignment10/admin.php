@@ -13,7 +13,7 @@ foreach ($admins as $a) {
 	}
 }
 // if they are not admin, dont allow access to page
-if(!adminStatus) {
+if(!$adminStatus) {
     print " <h2> Sorry you do not have access to this page. Get out. </h2>";
 }
 else{
