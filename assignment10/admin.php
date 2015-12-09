@@ -18,11 +18,13 @@ if(!adminStatus) {
     print " <h2> Sorry you do not have access to this page. Get out. </h2>";
 }
 else{
+    print " <div id = 'admin_list'>";
     print "<h2> Hello Admin. Below are options you have that regular users do not. Enjoy! </h2>";
     print " <ul id = 'admin_list'>";
-    print " <li><a href = 'https://dduong.w3.uvm.edu/cs148develop/assignment10/add.php'> Add </a></li>";
-    print " <li><a href = 'https://dduong.w3.uvm.edu/cs148develop/assignment10/delete.php'> Delete </a></li>";
+    print " <li id = 'admin_list'><a href = 'add.php'> Add </a></li>";
+    print " <li id = 'admin_list'><a href = 'delete.php'> Delete </a></li>";
     print " </ul>";
+    print "</div>";
 }
 
 ?>

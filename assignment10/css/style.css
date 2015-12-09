@@ -5,8 +5,17 @@ body {
     background-color: #040404;
     
 }
+
+
 h3 a:visited{
     color: #00FFFF;
+}
+
+h2{
+     color: white;
+     text-align: center;
+     margin-bottom: 100px;
+     margin-top: 100px;
 }
 
 table a:visited{
@@ -68,6 +77,7 @@ nav {
     text-align: left;
     height: 55px;
 }
+
 nav ul, nav ul * {
    
     list-style:none;
@@ -224,6 +234,19 @@ aside{
     padding-left: 60px;
     
 }
+
+#admin_list ul {
+    list-style: none;
+    text-align: center;
+}
+#admin_list li a{
+    display: inline-block;
+    float: left;
+    color: white;
+    font-size: 28px;
+    margin:0 0 400px 300px;
+}
+
 
 /*------------------------------ Footer -----------------------------*/
 footer{
