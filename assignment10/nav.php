@@ -2,6 +2,9 @@
 <nav>
     <ul>
         <?php
+        $username = htmlentities($_SERVER["REMOTE_USER"], ENT_QUOTES, "UTF-8"); 
+$query = 'SELECT pmkNetId FROM tblAdmin';
+$admins = $thisDatabaseReader->select($query,"",0,0,0,0,false,false);
         // This sets the current page to not be a link. Repeat this if block for
         //  each menu item 
         if ($path_parts['filename'] == "index") {
@@ -25,11 +28,22 @@
             print '<li><a href="form.php">form</a></li>';
         }
         
-         if ($path_parts['filename'] == "admin") {
-            print '<li class="activePage">Admin</li>';
-        } else {
-            print '<li><a href="admin.php">Admin</a></li>';
+         foreach ($admins as $a) {
+        // foreach ($adminIds as $adminId) {
+        //   print $adminId;
+        // }
+        for ($i = 0; $i < 1; $i++) {
+          // print $adminIds[$i];
+          if ($username == $a[$i]) {
+            // print 1;
+            if ($path_parts['filename'] == "admin") {
+                print '<li class="activePage">Admin</li>';
+            } else {
+                print '<li><a href="admin.php">Admin</a></li>';
+            } 
+          }
         }
+      }
         
         
         ?>
