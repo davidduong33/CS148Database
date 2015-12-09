@@ -30,11 +30,12 @@ $yourURL = $domain . $phpSelf;
 if (isset($_GET["id"])) {
     $pmkShoeId = (int) htmlentities($_GET["id"], ENT_QUOTES, "UTF-8");
 
-    $query = 'Select pmkName, fldBrand, fldSize, fldWing, fldColumn, fldRow from tblShoe, '
+    $query = 'Select pmkShoeId,pmkName, fldBrand,fnkName, fldSize, fldWing, fldColumn, fldRow from tblShoe, '
             . 'tblShoeLocation where fnkName = pmkName and fldApproved = 1';
 
     $results = $thisDatabase->select($query, array($pmkShoeId), 1, 0, 0, 0, false, false);
-
+    $id = $results[0]["pmkShoeId"];
+    $fname = $results[0]["fnkName"];
     $name = $results[0]["pmkName"];
     $brand = $results[0]["fldBrand"];
     $size = $results[0]["fldSize"];
@@ -42,12 +43,14 @@ if (isset($_GET["id"])) {
     $column = $results[0]["fldColumn"];
     $row = $results [0]["fldRow"];
 } else {
+    $id = -1;
     $name =" ";
-    $brand = " ";
+    $fname = " ";
     $size = " ";
-    $wing = " ";
-    $column = " ";
-    $row = " ";
+    $brand = "Nike";
+    $wing = "North";
+    $column = "1";
+    $row = "1";
 }
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -57,11 +60,13 @@ if (isset($_GET["id"])) {
 // Initialize Error Flags one for each form element we validate
 // in the order they appear in section 1c.
 $nameERROR = false;
-$brandERROR = false;
+$fnameERROR = false;
 $sizeERROR = false;
+$brandERROR = false;
 $wingERROR = false;
 $columnERROR = false;
 $rowERROR = false;
+
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1e misc variables
@@ -69,6 +74,7 @@ $rowERROR = false;
 // create array to hold error messages filled (if any) in 2d displayed in 3c.
 $errorMsg = array();
 $data = array();
+$data2= array();
 $dataEntered = false;
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -99,12 +105,18 @@ if (isset($_POST["btnSubmit"])) {
 
     $name = htmlentities($_POST["txtName"], ENT_QUOTES, "UTF-8");
     $data[] = $name;
-
-    $brand = htmlentities($_POST["txtBrand"], ENT_QUOTES, "UTF-8");
-    $data[] = $brand;
-
+     $fname = htmlentities($_POST["txtFname"], ENT_QUOTES, "UTF-8");
+    $data2[] = $fname;
     $size = htmlentities($_POST["txtSize"], ENT_QUOTES, "UTF-8");
     $data[] = $size;
+    $brand = htmlentities($_POST["radBrand"], ENT_QUOTES, "UTF-8");
+    $data[] = $brand;
+    $wing = htmlentities($_POST["lstWing"], ENT_QUOTES, "UTF-8");
+    $data2[] = $wing;
+    $column = htmlentities($_POST["lstColumn"], ENT_QUOTES, "UTF-8");
+    $data2[] = $column;
+     $row = htmlentities($_POST["lstRow"], ENT_QUOTES, "UTF-8");
+    $data2[] = $row;
     
      
     
@@ -119,19 +131,21 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Please enter the name of your shoe";
         $nameERROR = true;
     } 
+    
+     if ($fname == "") {
+        $errorMsg[] = "Please enter the name of your shoe";
+        $fnameERROR = true;
+    } 
 
-    if ($brand == "") {
-        $errorMsg[] = "Please enter the brand";
-        $brandERROR = true;
+    if ($size== "") {
+        $errorMsg[] = "Please enter your size";
+        $sizeERROR = true;
     } elseif (!verifyAlphaNum($brand)) {
-        $errorMsg[] = "Your Brand seems to have extra characters.";
-        $brandERROR = true;
+        $errorMsg[] = "Your size seems to have extra characters.";
+        $sizeERROR = true;
     }
 
-    if ($size == "") {
-        $errorMsg[] = "Please enter the shoe size";
-        $sizeERROR = true;
-    }// should check to make sure its the correct date format
+    
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
 // SECTION: 2d Process Form - Passed Validation
@@ -154,30 +168,39 @@ if (isset($_POST["btnSubmit"])) {
 
             if ($update) {
                 $query = 'UPDATE tblShoe SET ';
+                $query2 = 'UPDATE tblShoeLocation SET ';
             } else {
                 $query = 'INSERT INTO tblShoe SET ';
+                $query2 = 'INSERT INTO tblShoeLocation SET ';
             }
-
+            $query .= 'pmkShoeId = ?, ';
             $query .= 'pmkName = ?, ';
             $query .= 'fldBrand = ?, ';
             $query .= 'fldSize = ? ';
+            
+            $query2 .= 'fldWing = ?, ';
+            $query2 .= 'fldColumn = ?, ';
+            $query2 .= 'fldRow = ? ';
 
             if ($update) {
                 $query .= 'WHERE pmkShoeId = ?';
-                $data[] = $pmkPoetId;
+                $query2.= 'WHERE fnkName = ?';
+                $data[] = $pmkShoeId;
+                $data2[] = $fnkName;
+                
 
-                if ($_SERVER["REMOTE_USER"] == 'dduong') {
-                    $results = $thisDatabase->update($query, $data, 1, 0, 0, 0, false, false);
-                }
+                $results = $thisDatabaseWriter->update($query, $data, 1, 0, 0, 0, false, false);
+                 $results2 = $thisDatabaseWriter->update($query2, $data2, 1, 0, 0, 0, false, false);
             } else {
-                if ($_SERVER["REMOTE_USER"] == 'dduong'){
+                
                     $results = $thisDatabase->insert($query, $data);
                     $primaryKey = $thisDatabase->lastInsert();
                     if ($debug) {
                         print "<p>pmk= " . $primaryKey;
                     }
+                    $results2 = $thisDatabaseWriter->insert($query2, $data2);
                 }
-            }
+            
 
             // all sql statements are done so lets commit to our changes
             //if($_SERVER["REMOTE_USER"]=='rerickso'){
@@ -191,7 +214,7 @@ if (isset($_POST["btnSubmit"])) {
             $thisDatabase->db->rollback();
             if ($debug)
                 print "Error!: " . $e->getMessage() . "</br>";
-            $errorMsg[] = "There was a problem with accpeting your data please contact us directly.";
+            $errorMsg[] = "There was a problem with accepting your data please contact us directly.";
         }
     } // end form is valid
 } // ends if form was submitted.
@@ -250,14 +273,16 @@ if (isset($_POST["btnSubmit"])) {
               method="post"
               id="frmRegister">
             <fieldset class="wrapper">
-                <legend>Shoes</legend>
+                <legend>Add Shoe</legend>
+                 <fieldset class="basicInfo">
+                <legend><span class="number">1</span>Shoes</legend>
 
                 <input type="hidden" id="hidPoetId" name="hidShoeId"
                        value="<?php print $pmkShoeId; ?>"
                        >
 
                 <label for="txtName" class="required">Name
-                    <input type="text" id="txtFirstName" name="txtName"
+                    <input type="text" id="txtName" name="txtName"
                            value="<?php print $name; ?>"
                            tabindex="100" maxlength="45" placeholder="Enter the Shoe Name"
     <?php if ($nameERROR) print 'class="mistake"'; ?>
@@ -265,30 +290,123 @@ if (isset($_POST["btnSubmit"])) {
                            autofocus>
                 </label>
 
-                <label for="txtBrand" class="required">Brand
-                    <input type="text" id="txtLastName" name="txtBrand"
-                           value="<?php print $brand; ?>"
-                           tabindex="100" maxlength="45" placeholder="Enter your Brand"
-    <?php if ($brandERROR) print 'class="mistake"'; ?>
-                           onfocus="this.select()"
-                           >
-                </label>
-
                 <label for="txtSize" class="required">Size
-                    <input type="text" id="txtBirthday" name="txtSize"
+                    <input type="text" id="txtSize" name="txtSize"
                            value="<?php print $size; ?>"
                            tabindex="100" maxlength="45" placeholder="Enter your Size"
     <?php if ($sizeERROR) print 'class="mistake"'; ?>
                            onfocus="this.select()"
                            >
-                </label>                
-            </fieldset> <!-- ends contact -->
-            </fieldset> <!-- ends wrapper Two -->
+                </label>
+
+         
+                </label>     
+                 </fieldset> <!--ends info -->
+            
+             <fieldset class="radBrand">
+                        <legend><span class="number">2</span>
+                            Brand</legend>
+                        <label class="brand"><input type="radio" 
+                                                     id="radBrandNike" 
+                                                     name="radBrand" 
+                                                     value="Nike"
+    <?php if ($brand == "Nike") print 'checked' ?>
+                                                     tabindex="130">Nike</label>
+                        <label class = "brand"><input type="radio" 
+                                                       id="radBrandAdidas" 
+                                                       name="radBrand" 
+                                                       value="Adidas"
+    <?php if ($brand == "Adidas") print 'checked' ?>
+                                                       tabindex="140">Adidas</label>
+                        <label class = "brand"><input type="radio" 
+                                                       id="radBrandUnder" 
+                                                       name="radBrand" 
+                                                       value="Under Armour"
+    <?php if ($brand == "Under Armour") print 'checked' ?>
+                                                       tabindex="150">Under Armour</label>
+                 <label class = "brand"><input type="radio" 
+                                                       id="radBrandJordan" 
+                                                       name="radBrand" 
+                                                       value="Jordan"
+    <?php if ($brand == "Jordan") print 'checked' ?>
+                                                       tabindex="160">Jordan</label>
+                 <label class = "brand"><input type="radio" 
+                                                       id="radBrandOther" 
+                                                       name="radBrand" 
+                                                       value="Other"
+    <?php if ($brand == "Other") print 'checked' ?>
+                                                       tabindex="170">Other</label>
+
+                    </fieldset><!-- ends radBrand-->
+                    <fieldset  class="listbox">	
+                        <legend><span class="number">3</span>Location</legend>
+                        <label for="lstWing">Wing
+                        <select id="lstWing" 
+                                name="lstWing" 
+                                tabindex="180" >
+                            <option <?php if ($wing == "North") print " selected "; ?>
+                                value="North">North</option>
+
+                            <option <?php if ($wing == "East") print " selected "; ?>
+                                value="East" >East</option>
+
+                            <option <?php if ($wing == "West") print " selected "; ?>
+                                value="West" >West</option>
+
+                            <option <?php if ($wing == "South") print " selected "; ?>
+                                value="South" >South</option>
+                         
+                        </select>
+                        </label>
+                        
+                        <label for="lstColumn">Column
+                        <select id="lstColumn" 
+                                name="lstColumn" 
+                                tabindex="190" >
+                            <option <?php if ($column == "1") print " selected "; ?>
+                                value="1">1</option>
+
+                            <option <?php if ($column == "2") print " selected "; ?>
+                                value="2" >2</option>
+
+                            <option <?php if ($column == "3") print " selected "; ?>
+                                value="3" >3</option>
+
+                            <option <?php if ($column == "4") print " selected "; ?>
+                                value="4" >4</option>
+                         
+                        </select>
+                        </label>
+                        
+                        <label for="lstRow"> Row
+                        <select id="lstRow" 
+                                name="lstRow" 
+                                tabindex="190" >
+                            <option <?php if ($row == "1") print " selected "; ?>
+                                value="1">1</option>
+
+                            <option <?php if ($row == "2") print " selected "; ?>
+                                value="2" >2</option>
+
+                            <option <?php if ($row == "3") print " selected "; ?>
+                                value="3" >3</option>
+
+                            <option <?php if ($row == "4") print " selected "; ?>
+                                value="4" >4</option>
+                         
+                        </select>
+                        </label>
+                        
+                        
+                    </fieldset> <!-- End of List --->
+            
             <fieldset class="buttons">
                 <legend></legend>
                 <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
             </fieldset> <!-- ends buttons -->
-            </fieldset> <!-- Ends Wrapper -->
+            
+          </fieldset> <!-- ends wrapper-->
+            
         </form>
         <?php
     } // end body submit

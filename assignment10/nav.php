@@ -2,7 +2,7 @@
 <nav>
     <ul>
         <?php
-        $username = htmlentities($_SERVER["REMOTE_USER"], ENT_QUOTES, "UTF-8"); 
+         
 $query = 'SELECT pmkNetId FROM tblAdmin';
 $admins = $thisDatabaseReader->select($query,"",0,0,0,0,false,false);
         // This sets the current page to not be a link. Repeat this if block for

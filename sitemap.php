@@ -22,6 +22,29 @@
     <hr>
     <a href="tryme.php">Try me</a> 
     
+    <p> Final Assignment 10 <p>
+    <ul>
+        <li><a href="assignment10/index.php">Home</a></li>
+         <li><a href="assignment10/form.php">Form</a></li>
+         <li><a href="assignment10/ER Diagram.pdf">ER Diagram</a></li>
+         <li><a href="assignment10/schema.pdf">Schema</a></li>
+         <li><a href="assignment10/datadictionary.pdf">Data Dictionary</a></li>
+         <li><a href="assignment10/admin.php">Admin</a></li>
+         <li><a href="assignment10/delete.php">Delete</a></li>
+         <li><a href="assignment10/add.php">Add</a></li>
+         <li><a href="assignment10/table.php">Table of Shoes</a></li>
+    </ul>
+    <ul>
+         <li><a href="assignment10/view.php">View All Shoes</a></li>
+         <li><a href="assignment10/kd8.php">KD 8 Shoe</a></li>
+         <li><a href="assignment10/walladidas2.php">Wall Adidas Shoe</a></li>
+         <li><a href="assignment10/kdtrey5.php">KD Trey 5 Shoe</a></li>
+         <li><a href="assignment10/cp3.php">CP3 Shoe</a></li>
+         <li><a href="assignment10/lebronxii.php">Lebron Shoe</a></li>
+         <li><a href="assignment10/curry1.php.php">Curry Shoe</a></li>
+         <li><a href="assignment10/css/style.css">StyleSheet</a></li>
+    </ul>
+    
     <p> Four Year Plan Extra Credit </p>
     <ul>
         <li><a href="advising/fourYearPlan.php">My Four Year Plan</a></li>

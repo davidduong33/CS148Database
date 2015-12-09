@@ -8,7 +8,7 @@ require_once('lib/custom-functions.php');
         <title>Shoe Inventory</title>
         <meta charset="utf-8">
         <meta name="author" content="David Duong">
-        <meta name="description" content="Shoe inventory website">
+        <meta name="description" content="inventory website tracking shoes">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -104,7 +104,7 @@ require_once('lib/custom-functions.php');
                 $_GET[$key] = sanitize($value, false);
             }
         }
-         
+         $username = htmlentities($_SERVER["REMOTE_USER"], ENT_QUOTES, "UTF-8");
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //
         // Process security check.

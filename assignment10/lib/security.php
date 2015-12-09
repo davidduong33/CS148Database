@@ -34,6 +34,8 @@ function securityCheck($path_parts, $yourURL, $form = false) {
     $whiteListPages[] = "lebronxii.php";
     $whiteListPages[] = "delete.php";
     $whiteListPages[] = "admin.php";
+      $whiteListPages[] = "delete2.php";
+        $whiteListPages[] = "form.php";
     
 
 

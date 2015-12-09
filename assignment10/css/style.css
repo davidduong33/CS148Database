@@ -361,3 +361,113 @@ label{
     
 }
 
+/*---------------------Form-----------*/
+
+#add article#main,#form article#main{
+    float: none;
+    margin: auto; /* because of the fixed width this centers the form */
+    text-align: left;
+    width: 600px; /* not repsonive but fixed */
+    background-color: #6E6E6E;
+}
+body#add, body#form{
+    background-color: #393939;
+}
+
+/* need to clear any floats that may exist */
+fieldset{
+    border: 2px solid #000000;
+    clear: both;  
+    margin: 3em;
+    text-align: center;
+    border-radius:10px 40px 40px 10px;
+}
+/* just pushes content to left side of the box. */
+fieldset.basicInfo{
+    display: block;
+    float: none;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+/* when you look at the labels this pushes then next to the input and right
+aligns them. Display block means they are each on their own line. */
+fieldset.basicInfo label{
+    display: block;
+    text-align: left; /* pushes the text to the right where they line up */
+     padding-bottom: 1em;/* the float left above pushes everything back to the left*/
+}
+fieldset.basicInfo input, fieldset.listbox option{
+    width: 50%;
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+fieldset.radBrand label,fieldset.listbox label, fieldset.radQuality label, fieldset.checkbox label{
+    display: block;
+    text-align: left;
+}
+label.brand, label.quality{
+    width: 50%;
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+#lstWing, #lstColumn, #lstRow {
+   width: 50%;
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 0.5em;
+}
+
+.number {
+    background-color: #FF5A09;
+    color: white;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 100%;
+}
+fieldset.basicInfo input{
+    width: 15em; /* works with above to be the same size for the boxes */
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+fieldset.buttons{
+    border: none;
+
+
+}
+
+fieldset.wrapper {
+    border: 0;
+    margin: auto;
+}
+
+fieldset.wrapper legend {
+    color: #FF5A09;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+fieldset.wrapper > legend {
+    /* i only want the first legend ie if it follows the class wrapper */
+    font-size: 2em;
+}
+
+#errors ol li{
+    color:#F70D1A;
+    font-weight: bold;
+}
+#errorsHead{
+    color:#F70D1A;
+    font-weight: bold;
+    text-align: center;
+}

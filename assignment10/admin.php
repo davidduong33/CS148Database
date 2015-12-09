@@ -2,13 +2,12 @@
 include "top.php";
 
 $adminStatus = false;
-$username = htmlentities($_SERVER["REMOTE_USER"], ENT_QUOTES, "UTF-8");
 $query = 'SELECT pmkNetId FROM tblAdmin';
-$adminArray = $thisDatabaseReader->select($query,"",0,0,0,0,false,false);
+$admins = $thisDatabaseReader->select($query,"",0,0,0,0,false,false);
 
-foreach ($adminArray as $admins) {
+foreach ($admins as $a) {
 	for ($i = 0; $i < 1; $i++) {
-		if ($username == $admins[$i]) {
+		if ($username == $a[$i]) {
 			$adminStatus = true;
 		}
 	}
