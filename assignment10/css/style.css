@@ -1,0 +1,340 @@
+/*------------------------   standard elements  ----------------------------- */
+body {
+    background-attachment:fixed;
+    font-family:Georgia, "Times New Roman", Times, serif;
+    background-color: #040404;
+    
+}
+h3 a:visited{
+    color: #00FFFF;
+}
+
+table a:visited{
+    color: purple;
+}
+
+a:hover {
+    text-transform: uppercase;
+}
+.clear {
+    clear:both;
+    display:block;
+    height:0;
+    overflow:hidden;
+    visibility:hidden;
+    width:0;
+    
+}
+.container{
+    margin:0 auto;
+    position:relative;
+    width:960px
+}
+
+/*------------------------------------------ Header & Navigation --------------------------------------------*/
+
+header {
+    height:145px;
+    margin:0 0 12px;
+    position:relative;
+    width:100%;
+    
+}
+.logo {
+    left:21px;
+    position:absolute;
+    text-align:center;
+    
+}
+.logo img {
+    margin:0 auto 2px;
+}
+.logo p {
+    color:white;
+    font-size:15px;
+    font-style:italic;
+    line-height:8px;
+}
+
+
+nav {
+    position:absolute;
+    top:52px;
+    right:0px;
+    background-color: #6E6E6E;
+    border: 2px solid #040404;
+    border-style: double;
+    border-width: thick;
+    text-align: left;
+    height: 55px;
+}
+nav ul, nav ul * {
+   
+    list-style:none;
+    
+}
+nav ul li {
+    display: inline-block;
+    float:left;
+    text-align: center;
+}
+nav ul li:hover {
+    transform: scale(1.1);
+    text-shadow: 5px 5px 10px;
+}
+nav ul li a {
+    color:#FFFFFF;
+    display:block;
+    font-size:16px;
+    height:50px;
+    line-height:25px;
+    padding:0 0 0 4px;
+    text-decoration:none;
+    text-transform:uppercase;
+    min-width:130px;
+}
+.activePage{
+    color:red;
+    display:block;
+    font-size:16px;
+    height:50px;
+    line-height:25px;
+    padding:0 0 0 4px;
+    text-decoration:none;
+    text-transform:uppercase;
+    min-width:130px;
+   
+    
+}
+
+/* ---------------------------------Body --------------------------------*/
+
+#main_bottom {
+    background-color:#dbddda;
+    width:800px;
+    margin:20px auto 10px auto;
+    border: 2px solid #040404;
+    border-style: double;
+    border-width: thick;
+   
+}
+
+
+#content h3 {
+    font-size:24px;
+    font-weight:normal;
+    line-height:1.2em;
+    margin:0;
+    padding:0 0 3px;
+    text-transform:uppercase;
+}
+#content{
+    padding: 3px 5px;
+    margin: 10px;
+}
+#content p {
+    font-size: 18px;
+}
+
+
+
+
+
+#gallery_wrapper{
+ width: 90%;
+ margin: 10px auto;
+ overflow: hidden;
+}
+
+h3{
+   text-align:center;
+   clear:both;
+   
+}
+h3 a:link{
+    color: white;
+}
+
+.gallery_item h3 a:hover{
+    color: red;
+}
+
+.gallery_item {
+ float: left;
+ width: 46%;
+ margin:  2% 1% 40px 3%; 
+ 
+}
+ 
+
+ 
+.gallery_item img {
+ max-width: 100%;
+ 
+}
+.img_small{
+    transform: scale(0.6,0.6);
+}
+
+.gallery_item ul{
+    color: white;
+    list-style-position: inside;
+    list-style-type: circle;
+    width: 80%;
+    
+}
+.gallery_item li{
+    padding-bottom: 20px;
+}
+.view_item{
+    color: white;
+    width: 90%;
+    margin: 10px auto;
+    overflow: hidden;
+}
+.description{
+    padding-top: 50px;
+    
+}
+.view_item li{
+    list-style:none;
+    font-size: 18px;
+    margin: 40px auto 50px auto;
+    max-width: 100%;
+}
+.view_item img{
+    transform: scale(0.9,0.9);
+}
+
+
+.left{
+     float: left;
+ width: 550px;
+
+}
+#title{
+    padding-top: 10px;
+    text-align: center;
+    font-size: 22px;
+}
+
+aside{
+    width: 30%;
+    float: left;
+    padding-left: 60px;
+    
+}
+
+/*------------------------------ Footer -----------------------------*/
+footer{
+    padding:25px;
+    text-align:right;
+    color:#FFFFFF;
+    font-size:14px;
+}
+
+/*------------------------ Slider ----------------------------*/
+#slider_wrapper {
+    width:800px;
+    margin:5px auto;
+    
+}
+.nivoSlider {
+    position:relative;
+}
+.nivoSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+.nivo-slice {
+    display:block;
+    position:absolute;
+    z-index:50;
+    height:100%;
+}
+.nivo-box {
+    display:block;
+    position:absolute;
+    z-index:5;
+}
+.nivo-caption {
+    background:url(../images/slider_caption.png) repeat 50% 0%;
+    width:607px;
+    padding:22px 170px 28px 22px;
+    color:#fff;
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index:90;
+}
+.nivo-caption h5 {
+    color:#FFFFFF;
+    font-size:30px;
+    font-weight:normal;
+    line-height:1.2em;
+    margin:0;
+    padding:0 0 2px;
+}
+
+.promo_caption {
+    display:none;
+}
+/*----------------------Table---------------------------*/
+
+#shoelist {
+	border: 1px solid #e3e3e3;
+	background-color: #f2f2f2;
+        width: 92%;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+        margin-top: 50px;
+        margin-left: 3.5%;
+}
+#shoelist td, #shoelist th {
+	padding: 5px;
+	color: #333;
+}
+#shoelist headers{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding: .2em 0 .2em .5em;
+	text-align: left;
+	color: #4B4B4B;
+	background-color: #C8C8C8;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3), color-stop(.6,#B3B3B3));
+	background-image: -moz-linear-gradient(top, #D6D6D6, #B0B0B0, #B3B3B3 90%);
+	border-bottom: solid 1px #999;
+}
+#shoelist th {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	line-height: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+	text-shadow: white 1px 1px 1px;
+}
+#shoelist td {
+	line-height: 20px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+#shoelist td:hover {
+	background-color: #fff;
+}
+
+label{
+    color: white;
+}
+
+#edit{
+    padding-left: 3px;
+    margin-left: 3px;
+    font-style: italic;
+    font-weight: bold;
+    
+}
+
