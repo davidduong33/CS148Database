@@ -201,35 +201,37 @@ if (isset($_POST["btnSubmit"])) {
 <article id ="main">
 
     <?php
-// Here we display any errors that were on the form
-
-    print '<div id="errors">';
-
-    if ($errorMsg) {
-        echo "<ol>\n";
-        foreach ($errorMsg as $err) {
-            echo "<li>" . $err . "</li>\n";
-        }
-        echo "</ol>\n";
+ // SECTION 3a.
+// If its the first time coming to the form or there are errors we are going
+// to display the form.
+if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) { // closing of if marked with: end body submit
+    print "<h1>Your Request has ";
+    if (!$mailed) {
+        print "not ";
     }
-
-    print '</div>';
-
-//  In this block  display the information that was submitted and do not 
-//  display the form.
-
-    if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) {  // closing of if marked with: end body submit
-        print "<h1>We have ";
-
-        if (!$mailed) {
-            echo "not ";
+    print "been processed</h1>";
+    print "<p>A copy of this message has ";
+    if (!$mailed) {
+        print "not ";
+    }
+    print "been sent</p>";
+    print "<p>To: " . $email . "</p>";
+    print "<p>Mail Message:</p>";
+    print $message;
+} else {
+    //#########################
+    // SECTION 3b Error Messages
+    // display any error messages before we print out the form
+    if ($errorMsg) {
+        print '<h3 id = "errorsHead"> Your Mistakes </h3>';
+        print '<div id="errors">';
+        print "<ol>\n";
+        foreach ($errorMsg as $err) {
+            print "<li>" . $err . "</li>\n";
         }
-
-        echo "recieved your information!</h1>";
-
-        print "<p>Thank you for coming! </p>";
-    } else {
-
+        print "</ol>\n";
+        print '</div>';
+    }
 // display the form, notice the closing } bracket at the end just before the 
 // closing body tag
         ?>
