@@ -9,6 +9,21 @@
 // This file is only for class purposes and should never be publicly live
 //##############################################################################
 include "top.php";
+$adminStatus = false;
+$query = 'SELECT pmkNetId FROM tblAdmin';
+$admins = $thisDatabaseReader->select($query,"",0,0,0,0,false,false);
+
+foreach ($admins as $a) {
+	for ($i = 0; $i < 1; $i++) {
+		if ($username == $a[$i]) {
+			$adminStatus = true;
+		}
+	}
+}
+// if they are not admin, dont allow access to page
+if(!$adminStatus) {
+    print " <h2> Sorry you do not have access to this page. Get out. </h2>";
+}
 $field='pmkName';
 $sort='ASC';
 if(isset($_GET['sorting']))

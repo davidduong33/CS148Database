@@ -2,7 +2,9 @@
 <nav>
     <ul>
         <?php
-         
+         $adminStatus = false;
+$query = 'SELECT pmkNetId FROM tblAdmin';
+$admins = $thisDatabaseReader->select($query,"",0,0,0,0,false,false);
         // This sets the current page to not be a link. Repeat this if block for
         //  each menu item 
         if ($path_parts['filename'] == "index") {
@@ -25,13 +27,20 @@
         } else {
             print '<li><a href="form.php">form</a></li>';
         }
+         foreach ($admins as $a) {
         
+        for ($i = 0; $i < 1; $i++) {
+          // print $adminIds[$i];
+          if ($username == $a[$i]) {
+            // print 1;
             if ($path_parts['filename'] == "admin") {
                 print '<li class="activePage">Admin</li>';
             } else {
                 print '<li><a href="admin.php">Admin</a></li>';
             } 
-          
+          }
+        }
+      }
         
       
         
