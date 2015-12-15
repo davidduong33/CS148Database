@@ -43,6 +43,7 @@
          <li><a href="assignment10/lebronxii.php">Lebron Shoe</a></li>
          <li><a href="assignment10/curry1.php.php">Curry Shoe</a></li>
          <li><a href="assignment10/css/style.css">StyleSheet</a></li>
+         <li><a href="assignment10/specs.pdf">Specs</a></li>
     </ul>
     
     <p> Four Year Plan Extra Credit </p>
